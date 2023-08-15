@@ -3,18 +3,17 @@ const express = require("express");
 const userRouter = express.Router();
 
 const {
-  signUpSchema,
-  signInSchema,
-  validateBody,
-} = require("../middlewares/userValidation");
-
-const {
   signup,
   login,
   logout,
   getCurrent,
 } = require("../controllers/userControllers");
 const authenticate = require("../middlewares/authenticate");
+const {
+  signUpSchema,
+  signInSchema,
+  validateBody,
+} = require("../schemas/userSchemas");
 
 userRouter.post("/signup", validateBody(signUpSchema), signup);
 
