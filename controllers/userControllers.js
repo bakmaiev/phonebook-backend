@@ -66,4 +66,17 @@ const login = async (req, res) => {
   });
 };
 
-module.exports = { signup, login };
+const logout = async (req, res) => {
+  const { _id } = req.user;
+  await User.findByIdAndUpdate(_id, { token: "" });
+  res.status(204).send();
+};
+
+const getCurrent = (req, res) => {
+  const { email, name } = req.user;
+  res.json({ email, name });
+};
+
+// console.log(SECRET_KEY);
+
+module.exports = { signup, login, logout, getCurrent };
