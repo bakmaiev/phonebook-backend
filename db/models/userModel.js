@@ -20,7 +20,7 @@ const userSchema = new Schema(
   { versionKey: false }
 );
 
-userSchema.methods.hashPasvord = async function (password) {
+userSchema.methods.hashPassword = async function (password) {
   this.password = await bcrypt.hash(password, 10);
 };
 

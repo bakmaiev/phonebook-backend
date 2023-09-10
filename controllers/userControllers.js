@@ -11,7 +11,7 @@ const signup = async (req, res) => {
     return;
   }
   const newUser = new User({ name, email, password });
-  await newUser.hashPasvord(password);
+  await newUser.hashPassword(password);
   await newUser.save();
 
   const payload = {
@@ -76,7 +76,5 @@ const getCurrent = (req, res) => {
   const { email, name } = req.user;
   res.json({ email, name });
 };
-
-// console.log(SECRET_KEY);
 
 module.exports = { signup, login, logout, getCurrent };
